@@ -14,7 +14,7 @@ npm install
 
 Setup mongodb
 ```
-mongodb-runner start
+npm install -g mongodb-runner 
 ```
 then 
 ```

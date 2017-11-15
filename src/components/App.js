@@ -7,8 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1><code>Create React App Parse Redux</code></h1>
-          <p>A somewhat hefty boiler plate using create-react-app with a Parse backend</p>
+          <h1><code>Code Investigator</code></h1>
         </header>
         <nav>
           <Link to="/">Home</Link>
@@ -17,7 +16,7 @@ class App extends Component {
         </nav>
         {this.props.children}
         <footer>
-          <p><a href="https://github.com/zebapy/create-react-app-parse-redux">View on GitHub</a></p>
+          <p>some footer text</p>
         </footer>
       </div>
     );

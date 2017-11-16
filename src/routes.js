@@ -4,6 +4,7 @@ import SignupContainer from './containers/SignupContainer';
 import LoginContainer from './containers/LoginContainer';
 import DashboardContainer from './containers/DashboardContainer';
 import NotFound from './components/NotFound';
+import Charts from './components/Charts';
 
 export function requireAuth(store) {
   return (nextState, replace) => {
@@ -44,6 +45,10 @@ const createRoutes = (store) => {
         {
           path: 'login',
           component: LoginContainer
+        },
+        {
+          path: 'charts',
+          component: Charts
         },
         {
           path: '*',

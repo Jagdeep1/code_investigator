@@ -13,6 +13,7 @@ class App extends Component {
           <Link to="/">Home</Link>
           <Link to="/signup">Signup</Link>
           <Link to="/login">Login</Link>
+          <Link to="/charts">Charts</Link>
         </nav>
         {this.props.children}
         <footer>

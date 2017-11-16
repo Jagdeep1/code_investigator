@@ -1,0 +1,11 @@
+
+{
+  "tslint": "scripts/config/tslint-report/tslint.json", // path to tslint.json
+  "srcFiles": "codeUnderTest/src/**/*.ts", // files to lint
+  "outDir": "reports/tslint", // output folder to write the report to.
+  "json": "tslint-report.json", // name of the json report generated.
+  "fileWiseData": "file-wise-report.json",
+  "breakOnError": false, // Should it throw an error in tslint errors are found.
+  "typeCheck": true, // enable type checking. requires tsconfig.json
+  "tsconfig": "tsconfig.json" // path to tsconfig.json
+}

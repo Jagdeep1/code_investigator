@@ -41,6 +41,7 @@ class Signup extends Component {
   }
 
   render() {
+    console.log('this.props',this.props);
     const { error, isSigningUp } = this.props;
     return (
       <div>

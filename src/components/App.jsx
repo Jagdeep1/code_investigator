@@ -14,6 +14,7 @@ class App extends Component {
           <Link to="/signup">Signup</Link>
           <Link to="/login">Login</Link>
           <Link to="/charts">Charts</Link>
+          <Link to="/codeupload">CodeUpload</Link>
         </nav>
         {this.props.children}
         <footer>

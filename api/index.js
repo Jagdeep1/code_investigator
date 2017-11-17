@@ -1,14 +1,17 @@
 import express from 'express';
 import { ParseServer } from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
+import  multer  from 'multer';
+import  cors from 'cors';
 import config from './config';
 
-const app = express();
 
+const app = express();
+const upload = multer({ dest: 'uploads/' });
 const PORT = process.env.PORT || 1337;
 
 const api = new ParseServer(config);
-
+app.use(cors());
 app.use('/parse', api);
 
 const dashboard = new ParseDashboard({
@@ -27,7 +30,13 @@ if(process.env.NODE_ENV !== 'production') {
   console.info(`dashboard available at http://localhost:${PORT}/dashboard`); // eslint-disable-line no-console
 }
 
-app.get('/', (req, res) => res.redirect(301, '/parse'));
+app.get('/api', (req, res) => res.redirect(301, '/parse'));
+
+//upload end point
+app.post('/upload', upload.single('src'), function (req, res, next) {
+  console.log('files',req.file);
+  res.send('file uploaded');
+})
 
 app.listen(PORT, (err) => {
   if(err) {

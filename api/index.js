@@ -1,14 +1,22 @@
 import express from 'express';
 import { ParseServer } from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
-import  multer  from 'multer';
-import  cors from 'cors';
+import multer from 'multer';
+import cors from 'cors';
 import config from './config';
-
+import { fileFilter, destination, fileName } from './utils';
 
 const app = express();
-const upload = multer({ dest: 'uploads/' });
 const PORT = process.env.PORT || 1337;
+
+const storage = multer.diskStorage({
+  destination: destination,
+  filename: fileName
+});
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter
+}).single('src');
 
 const api = new ParseServer(config);
 app.use(cors());
@@ -25,21 +33,22 @@ const dashboard = new ParseDashboard({
   ]
 });
 
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   app.use('/dashboard', dashboard);
   console.info(`dashboard available at http://localhost:${PORT}/dashboard`); // eslint-disable-line no-console
 }
 
 app.get('/api', (req, res) => res.redirect(301, '/parse'));
 
-//upload end point
-app.post('/upload', upload.single('src'), function (req, res, next) {
-  console.log('files',req.file);
-  res.send('file uploaded');
-})
+app.post("/upload", function(req, res) {
+  console.log('files', req.file);
+  upload(req, res, function(err) {
+    return err ? res.status(400).send('Only compressed files are allowed!') : res.end('File uploaded sucessfully!.');
+  });
+});
 
 app.listen(PORT, (err) => {
-  if(err) {
+  if (err) {
     return console.error(err);
   }
   console.log(`parse api listening on ${config.serverURL}`);

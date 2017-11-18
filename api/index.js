@@ -2,6 +2,7 @@ import express from 'express';
 import { ParseServer } from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
 import multer from 'multer';
+import bodyParser from 'body-parser';
 import cors from 'cors';
 import config from './config';
 import { fileFilter, destination, fileName } from './utils';
@@ -21,6 +22,7 @@ const upload = multer({
 const api = new ParseServer(config);
 app.use(cors());
 app.use('/parse', api);
+app.use(bodyParser.json());
 
 const dashboard = new ParseDashboard({
   apps: [
@@ -40,11 +42,16 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.get('/api', (req, res) => res.redirect(301, '/parse'));
 
-app.post("/upload", function(req, res) {
+app.post('/upload', (req, res) => {
   console.log('files', req.file);
-  upload(req, res, function(err) {
+  upload(req, res, err => {
     return err ? res.status(400).send('Only compressed files are allowed!') : res.end('File uploaded sucessfully!.');
   });
+});
+
+app.post('/analyze', (req, res) => {
+  console.log('Request Body: ', req.body);
+  res.end('analyze was hit!');
 });
 
 app.listen(PORT, (err) => {

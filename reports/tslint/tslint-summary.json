@@ -1,0 +1,220 @@
+{
+  "totalFiles": 0,
+  "total": 14,
+  "totalErrors": 8,
+  "totalWarnings": 6,
+  "errorTypes": [
+    {
+      "ruleName": "max-line-length",
+      "count": 1
+    },
+    {
+      "ruleName": "max-file-line-count",
+      "count": 2
+    },
+    {
+      "ruleName": "no-unused-variable",
+      "count": 4
+    },
+    {
+      "ruleName": "interface-name",
+      "count": 1
+    }
+  ],
+  "warningTypes": [
+    {
+      "ruleName": "no-unused-expression",
+      "count": 6
+    }
+  ],
+  "complexityThreshold": 0,
+  "aboveComplexitThreshold": 0,
+  "totalComplexity": 0,
+  "totalFunctionCount": 0,
+  "files": [
+    {
+      "fileName": "C:/Satyajit/T-Mobile/e-services-angular/eservices_angular/src/app/core/common/contentValid.spec.ts",
+      "total": 1,
+      "totalErrors": 0,
+      "totalWarnings": 1,
+      "errors": [],
+      "warnings": [
+        {
+          "ruleName": "max-line-length",
+          "description": "Exceeds maximum line length of 140",
+          "position": {
+            "line": 219,
+            "col": 0
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "C:/Satyajit/T-Mobile/e-services-angular/eservices_angular/src/app/core/common/definedChecks.spec.ts",
+      "total": 4,
+      "totalErrors": 0,
+      "totalWarnings": 4,
+      "errors": [],
+      "warnings": [
+        {
+          "ruleName": "no-unused-expression",
+          "description": "unused expression, expected an assignment or function call",
+          "position": {
+            "line": 166,
+            "col": 20
+          }
+        },
+        {
+          "ruleName": "no-unused-expression",
+          "description": "unused expression, expected an assignment or function call",
+          "position": {
+            "line": 170,
+            "col": 20
+          }
+        },
+        {
+          "ruleName": "no-unused-expression",
+          "description": "unused expression, expected an assignment or function call",
+          "position": {
+            "line": 174,
+            "col": 20
+          }
+        },
+        {
+          "ruleName": "no-unused-expression",
+          "description": "unused expression, expected an assignment or function call",
+          "position": {
+            "line": 178,
+            "col": 20
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "C:/Satyajit/T-Mobile/e-services-angular/eservices_angular/src/app/core/common/errorHandler.spec.ts",
+      "total": 1,
+      "totalErrors": 0,
+      "totalWarnings": 1,
+      "errors": [],
+      "warnings": [
+        {
+          "ruleName": "no-unused-expression",
+          "description": "unused expression, expected an assignment or function call",
+          "position": {
+            "line": 5,
+            "col": 12
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "C:/Satyajit/T-Mobile/e-services-angular/eservices_angular/src/app/core/common/featureFlags.spec.ts",
+      "total": 2,
+      "totalErrors": 0,
+      "totalWarnings": 2,
+      "errors": [],
+      "warnings": [
+        {
+          "ruleName": "no-unused-expression",
+          "description": "unused expression, expected an assignment or function call",
+          "position": {
+            "line": 74,
+            "col": 20
+          }
+        },
+        {
+          "ruleName": "max-file-line-count",
+          "description": "This file has 453 lines, which exceeds the maximum of 300 lines allowed. Consider breaking this file up into smaller parts",
+          "position": {
+            "line": 451,
+            "col": 4
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "C:/Satyajit/T-Mobile/e-services-angular/eservices_angular/src/app/core/common/runtimeFeatureFlags.spec.ts",
+      "total": 1,
+      "totalErrors": 0,
+      "totalWarnings": 1,
+      "errors": [],
+      "warnings": [
+        {
+          "ruleName": "no-unused-variable",
+          "description": "'windowParm' is declared but never used.",
+          "position": {
+            "line": 13,
+            "col": 22
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "C:/Satyajit/T-Mobile/e-services-angular/eservices_angular/src/app/core/header/header.service.spec.ts",
+      "total": 3,
+      "totalErrors": 0,
+      "totalWarnings": 3,
+      "errors": [],
+      "warnings": [
+        {
+          "ruleName": "no-unused-variable",
+          "description": "'navContentString' is declared but never used.",
+          "position": {
+            "line": 135,
+            "col": 18
+          }
+        },
+        {
+          "ruleName": "no-unused-variable",
+          "description": "'navContentString' is declared but never used.",
+          "position": {
+            "line": 156,
+            "col": 18
+          }
+        },
+        {
+          "ruleName": "max-file-line-count",
+          "description": "This file has 383 lines, which exceeds the maximum of 300 lines allowed. Consider breaking this file up into smaller parts",
+          "position": {
+            "line": 381,
+            "col": 4
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "C:/Satyajit/T-Mobile/e-services-angular/eservices_angular/src/app/core/ng2-device-detector/src/services/ng2-device.service.spec.ts",
+      "total": 1,
+      "totalErrors": 0,
+      "totalWarnings": 1,
+      "errors": [],
+      "warnings": [
+        {
+          "ruleName": "no-unused-variable",
+          "description": "'Constants' is declared but never used.",
+          "position": {
+            "line": 1,
+            "col": 12
+          }
+        }
+      ]
+    },
+    {
+      "fileName": "C:/Satyajit/T-Mobile/e-services-angular/eservices_angular/src/typings.d.ts",
+      "total": 1,
+      "totalErrors": 0,
+      "totalWarnings": 1,
+      "errors": [],
+      "warnings": [
+        {
+          "ruleName": "interface-name",
+          "description": "interface name must start with a capitalized I",
+          "position": {
+            "line": 6,
+            "col": 10
+          }
+        }
+      ]
+    }
+  ]
+}

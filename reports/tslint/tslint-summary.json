@@ -1,0 +1,57 @@
+{
+  "totalFiles": 1234,
+  "total": 0,
+  "totalErrors": 100,
+  "totalWarning": 50,
+  "errorTypes": [
+    {
+      "ruleName": "interface-name",
+      "count": 50
+    }
+  ],
+  "warningType": [
+    {
+      "ruleName": "no-unused-expression",
+      "count": 50
+    }
+  ],
+  "complexityThreshold": 10,
+  "aboveComplexitThreshold": 100,
+  "totalComplexity": 5000,
+  "totalFunctionCount": 10000,
+  "files": [
+    {
+      "name": "fileName",
+      "total": 0,
+      "totalErrors": 5,
+      "totalWarnings": 10,
+      "errors": [
+        {
+          "ruleName": "interface-name",
+          "description": "interface name must start with a capitalized I",
+          "position": {
+            "line": 6,
+            "col": 10
+          }
+        }
+      ],
+      "warnings": [
+        {
+          "ruleName": "no-unused-expression",
+          "description": "unused expression, expected an assignment or function call",
+          "position": {
+            "line": 74,
+            "col": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "cleanFile",
+      "totalErrors": 0,
+      "totalWarnings": 0,
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}

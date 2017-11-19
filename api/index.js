@@ -5,13 +5,15 @@ import multer from 'multer';
 import cors from 'cors';
 import config from './config';
 import { fileFilter, destination, fileName } from './utils';
-import StreamZip from 'node-stream-zip';
 import fs from 'fs';
 import spawn from 'child_process';
-// TODO: Convert to ES6
-const analyzeCode = require('../scripts/index');
+import analyzeCode from '../scripts/index';
+const unzip = require ('./unzip');
+import bodyParser from 'body-parser';
 
 const app = express();
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 const PORT = process.env.PORT || 1337;
 
 const storage = multer.diskStorage({
@@ -46,38 +48,17 @@ if (process.env.NODE_ENV !== 'production') {
 app.get('/api', (req, res) => res.redirect(301, '/parse'));
 
 app.post('/upload', (req, res) => {
-  console.log('files', req.file);
+  console.log('files', req.files);
   upload(req, res, (err) => {
     return err ? res.status(400).send('Only compressed files are allowed!') : res.end('File uploaded sucessfully!.');
   });
 });
 
 app.post('/analyze', (req, res) => {
-  const zip = new StreamZip({
-    file: 'uploads/1511033899869_app.zip',
-    storeEntries: true
-  });
-  // Handle errors
-  zip.on('error', err => {
-    console.log('Error unzipping the archive: ', err);
-  });
-  zip.on('ready', () => {
-    if (!fs.existsSync('extracted')) {
-      fs.mkdirSync('extracted');
-    }
-    zip.extract(null, './extracted', (err, count) => {
-      console.log(err ? 'Extract error' : `Extracted ${count} entries`);
-      zip.close();
-      // const cp = spawn('node', )
-      // TODO: Invoke using spawn, and perhaps move to where this should be.
-      // On second thought, spawn can be a bitch. Consider using exec instead.
-      analyzeCode()
-        // Assuming this will work.  
-        .finally(() => {
-          res.end('analyze was hit!');
-        });
-
-    });
+  console.log('Request body for Analyze: ', req.body);
+  unzip.decompress().then(something => {
+    console.log('Extraction Completed! ', something);
+    res.end('Extraction Completed!');
   });
 });
 

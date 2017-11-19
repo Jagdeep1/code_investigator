@@ -40,6 +40,7 @@
     "tslint-eslint-rules": "^4.1.1",
     "tslint-immutable": "^4.4.0",
     "typescript": "^2.6.1",
+    "unzip": "^0.1.11",
     "vrsource-tslint-rules": "^5.8.0",
     "zone.js": "^0.8.18"
   },

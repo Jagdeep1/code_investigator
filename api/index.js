@@ -62,16 +62,21 @@ app.post('/analyze', (req, res) => {
     console.log('Error unzipping the archive: ', err);
   });
   zip.on('ready', () => {
-    if (!fs.existsSync('extracted')){
+    if (!fs.existsSync('extracted')) {
       fs.mkdirSync('extracted');
     }
     zip.extract(null, './extracted', (err, count) => {
-        console.log(err ? 'Extract error' : `Extracted ${count} entries`);
-        zip.close();
-        // const cp = spawn('node', )
-        // TODO: Invoke using spawn, and perhaps move to where this should be.
-        analyzeCode();
-        res.end('analyze was hit!');
+      console.log(err ? 'Extract error' : `Extracted ${count} entries`);
+      zip.close();
+      // const cp = spawn('node', )
+      // TODO: Invoke using spawn, and perhaps move to where this should be.
+      // On second thought, spawn can be a bitch. Consider using exec instead.
+      analyzeCode()
+        // Assuming this will work.  
+        .finally(() => {
+          res.end('analyze was hit!');
+        });
+
     });
   });
 });

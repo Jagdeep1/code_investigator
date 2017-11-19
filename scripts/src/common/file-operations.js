@@ -6,14 +6,20 @@
   let fileList = [];
 
   function getFileListFromGlob(pattern) {
-    if (fileList.length === 0) {
-      fileList = glob.sync(pattern);
-    }
-    return fileList;
-  }
-
-  function readFile() {
-
+    return new Promise((resolve, reject) => {
+      if (fileList.length === 0) {
+        glob(pattern, {}, (err, data) => {
+          if (err) {
+            console.log('Error fetching file list: ', err);
+            return reject(err);
+          }
+          fileList = data;
+          return resolve(fileList);
+        });
+      } else {
+        return resolve(fileList);
+      }
+    });
   }
 
   module.exports = {

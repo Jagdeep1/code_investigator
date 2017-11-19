@@ -8,6 +8,8 @@ import { fileFilter, destination, fileName } from './utils';
 import StreamZip from 'node-stream-zip';
 import fs from 'fs';
 import spawn from 'child_process';
+// TODO: Convert to ES6
+const analyzeCode = require('../scripts/index');
 
 const app = express();
 const PORT = process.env.PORT || 1337;
@@ -67,6 +69,8 @@ app.post('/analyze', (req, res) => {
         console.log(err ? 'Extract error' : `Extracted ${count} entries`);
         zip.close();
         // const cp = spawn('node', )
+        // TODO: Invoke using spawn, and perhaps move to where this should be.
+        analyzeCode();
         res.end('analyze was hit!');
     });
   });

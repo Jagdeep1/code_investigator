@@ -24,15 +24,13 @@
       cliArguments = cliArguments + ' --force';
     }
 
-    console.info(funkyLogger.color('cyan', 'Generating TSlint report.'));
     const result = npmRun.execSync('tslint' + cliArguments, { cwd: __dirname });
-    console.info(result.toString());
-    console.info(funkyLogger.color('green', 'Tslint report written to JSON'));
+    if (result.toString()) {
+      console.info(result.toString());
+    }
 
-    console.info(funkyLogger.color('cyan', 'Reading json file...'));
     let rawData = JSON.parse(fs.readFileSync(config.jsonReport, 'utf8'));
-    console.info(funkyLogger.color('green', 'File read complete.'));
-    
+
     return rawData;
 
   }

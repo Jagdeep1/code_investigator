@@ -59,19 +59,19 @@
     extendedConfig.outDir = path.join(basePath, extendedConfig.outDir);
 
     extendedConfig.jsonReport = path.join(extendedConfig.outDir, extendedConfig.json);
-    extendedConfig.fileWiseReport = path.join(extendedConfig.outDir, extendedConfig.tsLintSummary);
+    extendedConfig.finalReport = path.join(extendedConfig.outDir, extendedConfig.tsLintSummary);
 
 
     console.info('Config used for generation of report: ');
-    console.info(funkyLogger.color('cyan', 'Path to tslint.json: '),
+    console.info(funkyLogger.color('blue', 'Path to tslint.json: '),
       funkyLogger.color('magenta', extendedConfig.tslint));
     if (extendedConfig.typeCheck) {
-      console.info(funkyLogger.color('cyan', 'Path to tsconfig.json: '),
+      console.info(funkyLogger.color('blue', 'Path to tsconfig.json: '),
         funkyLogger.color('magenta', extendedConfig.tsconfig));
     }
-    console.info(funkyLogger.color('cyan', 'Source files to be linted: '),
+    console.info(funkyLogger.color('blue', 'Source files to be linted: '),
       funkyLogger.color('magenta', extendedConfig.srcFiles));
-    console.info(funkyLogger.color('cyan', 'Output path for JSON report: '),
+    console.info(funkyLogger.color('blue', 'Output path for JSON report: '),
       funkyLogger.color('magenta', extendedConfig.finalReport));
 
     return extendedConfig;

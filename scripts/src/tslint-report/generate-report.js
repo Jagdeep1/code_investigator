@@ -3,15 +3,43 @@
 
   'use strict';
 
-  const _ = require('lodash');
   const fs = require('fs');
   const funkyLogger = require('../common/funky-logger');
   const npmRun = require('npm-run');
+  const basePath = require('../../config/root.config').basePath;
+
+  function invokeTSlint(cliArguments) {
+    return new Promise((resolve, reject) => {
+      npmRun.exec('tslint' + cliArguments, { cwd: basePath }, (err, stdout, stderr) => {
+        if (err) {
+          console.log('Error generating tslint report: ', err);
+          return reject(err);
+        }
+        if (stdout.toString()) {
+          console.info(stdout.toString());
+        }
+        if (stderr.toString()) {
+          console.info(stderr.toString());
+        }
+        return resolve();
+      });
+    });
+  }
+
+  function fetchReportDetails(filePath) {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+          console.log('Error reading tslint report: ', err);
+          return reject(err);
+        }
+        return resolve(JSON.parse(data || {}));
+      });
+    });
+  }
 
   function generateReport(config) {
     let data = {};
-    let fileListWithErrorCountArray = [];
-    let fileListWithErrorCount = {};
 
     let cliArguments = ' --config "' + config.tslint + '"' +
       ' --format json' +
@@ -26,52 +54,10 @@
       cliArguments = cliArguments + ' --force';
     }
 
-    console.info(funkyLogger.color('cyan', 'Generating TSlint report.'));
-    const result = npmRun.execSync('tslint' + cliArguments, { cwd: __dirname });
-    console.info(result.toString());
-    console.info(funkyLogger.color('green', 'Tslint report written to JSON'));
-
-    console.info(funkyLogger.color('cyan', 'Reading json file...'));
-    let rawData = JSON.parse(fs.readFileSync(config.jsonReport, 'utf8'));
-    console.info(funkyLogger.color('green', 'File read complete.'));
-    let filesCovered = [];
-
-    console.info(funkyLogger.color('cyan', 'Mapping data...'));
-    rawData.forEach((obj) => {
-      if (filesCovered.includes(obj.name)) {
-        fileListWithErrorCount[obj.name]++;
-      } else {
-        filesCovered.push(obj.name);
-        fileListWithErrorCount[obj.name] = 1;
-      }
-    });
-
-    Object.keys(fileListWithErrorCount).forEach((key) => {
-      fileListWithErrorCountArray.push({
-        name: key,
-        count: fileListWithErrorCount[key],
-        details: _.filter(rawData, { name: key })
+    return invokeTSlint(cliArguments)
+      .then(() => {
+        return fetchReportDetails(config.jsonReport);
       });
-    });
-    console.info(funkyLogger.color('green', 'Data mapping complete.'));
-
-    fileListWithErrorCountArray.sort(function (a, b) {
-      return b.count - a.count;
-    });
-
-    for (let i = 0; i < fileListWithErrorCountArray.length; i++) {
-      fileListWithErrorCountArray[i].index = i + 1;
-    }
-
-    data.total = rawData.length;
-    data.errors = fileListWithErrorCountArray;
-
-    console.info(funkyLogger.color('cyan', 'Writing file-wise data...'));
-    fs.writeFileSync(config.fileWiseReport, JSON.stringify(data), 'utf8');
-    console.info(funkyLogger.color('green', 'Data write complete.'));
-
-    console.info(funkyLogger.color('yellow', '\nTotal lint issues found: '), funkyLogger.color('red', data.total));
-    console.info(funkyLogger.color('green', 'TSLint html report generated and written to file'));
 
   }
 

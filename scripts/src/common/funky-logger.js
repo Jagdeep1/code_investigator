@@ -3,7 +3,7 @@
   
     'use strict';
   
-    const colors = require('../config/common/color-map.json');
+    const colors = require('../../config/common/color-map.json');
     const foreground = colors.foreground;
     const background = colors.background;
 

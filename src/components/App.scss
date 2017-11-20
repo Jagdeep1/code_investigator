@@ -1,0 +1,29 @@
+.App {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-bar {
+  list-style-type: none;
+  margin: 0 0 10px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  .nav-elements {
+    float: left;
+    a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    a:hover:not(.active) {
+      background-color: #111;
+    }
+  }
+  .active {
+    background-color: #4CAF50;
+  }
+}

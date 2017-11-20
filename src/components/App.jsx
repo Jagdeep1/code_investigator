@@ -9,12 +9,14 @@ class App extends Component {
         <header>
           <h1><code>Code Investigator</code></h1>
         </header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/signup">Signup</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/charts">Charts</Link>
-          <Link to="/codeupload">CodeUpload</Link>
+        <nav className="nav-bar">
+          <li className="nav-elements"><Link to="/">Home</Link></li>
+          <li className="nav-elements"><Link to="/signup">Signup</Link></li>
+          <li className="nav-elements"><Link to="/login">Login</Link></li>
+          <li className="nav-elements"><Link to="/charts">Charts</Link></li>
+          <li className="nav-elements" style={{'float':'right'}}>
+            <Link to="/codeupload" className="active" style={{'margin':'0'}}>CodeUpload</Link>
+          </li>
         </nav>
         {this.props.children}
         <footer>

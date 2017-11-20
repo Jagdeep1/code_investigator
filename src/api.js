@@ -2,7 +2,7 @@ import axios from 'axios';
 import config from './config';
 
 // TODO: construct this based on environment
-const BASE_URL = 'http://10.30.72.252:1337/';
+const BASE_URL = 'http://127.0.0.1:1337/';
 
 const instance = axios.create({
   baseURL: BASE_URL,
@@ -11,12 +11,12 @@ const instance = axios.create({
   }
 });
 
-export const signup = (username, password) => instance.post('api/users', {
+export const signup = (username, password) => instance.post('parse/users', {
   username,
   password
 });
 
-export const login = (username, password) => instance.get('api/login', {
+export const login = (username, password) => instance.get('parse/login', {
   params: {
     username,
     password

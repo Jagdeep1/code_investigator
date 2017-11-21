@@ -5,3 +5,4 @@ uploads
 *.log
 npm-debug.log*
 extracted
+reports

@@ -6,6 +6,7 @@ import DashboardContainer from './containers/DashboardContainer';
 import NotFound from './components/NotFound';
 import Charts from './components/Charts';
 import CodeUpload from './containers/CodeUpload';
+import TestContainer from './containers/TestContainer';
 
 export function requireAuth(store) {
   return (nextState, replace) => {
@@ -54,6 +55,10 @@ const createRoutes = (store) => {
         {
           path: 'codeupload',
           component: CodeUpload
+        },
+        {
+          path: 'testcomponent',
+          component: TestContainer
         },
         {
           path: '*',

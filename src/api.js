@@ -30,8 +30,16 @@ export const upload = (files) => {
  return instance.post('/upload',data);
 }
 
+export const getTsLintSummary = (projectName) => instance.get('parse/classes/tsLintSummary', {
+  params: {
+    where: {
+      projectName
+    }
+  }
+});
 export default {
   signup,
   login,
-  upload
+  upload,
+  getTsLintSummary
 }

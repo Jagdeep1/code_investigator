@@ -14,6 +14,7 @@ class App extends Component {
           <li className="nav-elements"><Link to="/signup">Signup</Link></li>
           <li className="nav-elements"><Link to="/login">Login</Link></li>
           <li className="nav-elements"><Link to="/charts">Charts</Link></li>
+          <li className="nav-elements"><Link to="/testcomponent">TestComponents</Link></li>
           <li className="nav-elements" style={{'float':'right'}}>
             <Link to="/codeupload" className="active" style={{'margin':'0'}}>CodeUpload</Link>
           </li>

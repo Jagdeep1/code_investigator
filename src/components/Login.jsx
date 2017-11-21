@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import {FormControl, FormGroup, ControlLabel, Checkbox} from 'react-bootstrap';
 
 class Login extends Component {
   constructor(props) {
@@ -43,23 +44,23 @@ class Login extends Component {
   render() {
     const { error, isLoggingIn } = this.props;
     return (
-      <div>
+      <div className="login-wrapper">
         <h1>Login</h1>
         <form onSubmit={this.handleFormSubmit}>
+        <FormGroup>
           {error}
-          <p>
-            <label>Username</label>
-            <input
+
+            <ControlLabel>Username</ControlLabel>
+            <FormControl
               type="text"
               name="username"
               value={this.state.username}
               onChange={this.handleTextFieldChange}
               required
             />
-          </p>
-          <p>
-            <label>Password</label>
-            <input
+
+            <ControlLabel>Password</ControlLabel>
+            <FormControl
               type="password"
               name="password"
               value={this.state.password}
@@ -67,14 +68,15 @@ class Login extends Component {
               minLength={8}
               required
             />
-          </p>
-          <p>
-            <input
+            <Checkbox >
+              Remember Me 
+            </Checkbox>
+            <FormControl
               type="submit"
               value={isLoggingIn ? 'Logging in...' : 'Log in'}
               disabled={isLoggingIn}
             />
-          </p>
+          </FormGroup>
         </form>
       </div>
     );

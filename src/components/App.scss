@@ -1,8 +1,4 @@
-.App {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
+@import '../../public/assets/_spacings.scss';
 
 .nav-bar {
   list-style-type: none;
@@ -27,3 +23,5 @@
     background-color: #4CAF50;
   }
 }
+
+@import 'Login.scss';

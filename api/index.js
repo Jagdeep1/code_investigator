@@ -58,7 +58,12 @@ app.post('/analyze', (req, res) => {
   console.log('Request body for Analyze: ', req.body);
   unzip.decompress().then(something => {
     console.log('Extraction Completed! ', something);
-    res.end('Extraction Completed!');
+    res.send('Extraction Completed!');
+    analyzeCode().then((analyzeCodeRes) => {
+      res.end(`Analysis complete: ${analyzeCodeRes}`);
+    }, (analyzeCodeError) => {
+      console.log(`Error Analyzing Code and Generating Reports: ${analyzeCodeError}`);
+    });
   });
 });
 

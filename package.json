@@ -47,8 +47,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "api": "nodemon api/index.js --exec babel-node",
-    "testApi": "nodemon --inspect api/index.js --exec babel-node 9999"
+    "api": "nodemon --ignore extracted/ --ignore reports/ api/index.js --exec babel-node",
+    "testApi": "nodemon --ignore extracted/ --ignore reports/ --inspect api/index.js --exec babel-node 9999"
   },
   "eslintConfig": {
     "extends": "react-app"

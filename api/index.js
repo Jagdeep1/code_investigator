@@ -1,29 +1,20 @@
-import express from 'express';
-import { ParseServer } from 'parse-server';
-import ParseDashboard from 'parse-dashboard';
-import multer from 'multer';
-import cors from 'cors';
-import config from './config';
-import { fileFilter, destination, fileName } from './utils';
-import fs from 'fs';
-import spawn from 'child_process';
-import analyzeCode from '../scripts/index';
-const unzip = require ('./unzip');
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import express from 'express';
+import ParseDashboard from 'parse-dashboard';
+import { ParseServer } from 'parse-server';
 
+import analyzeCode from '../scripts/index';
+import config from './config';
+import decompress from './unzip';
+import fileUpload from './file-upload/file-upload';
+
+const log = console.log;
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(fileUpload.upload);
 const PORT = process.env.PORT || 1337;
-
-const storage = multer.diskStorage({
-  destination: destination,
-  filename: fileName
-});
-const upload = multer({
-  storage: storage,
-  fileFilter: fileFilter
-}).single('src');
 
 const api = new ParseServer(config);
 app.use(cors());
@@ -42,34 +33,41 @@ const dashboard = new ParseDashboard({
 
 if (process.env.NODE_ENV !== 'production') {
   app.use('/dashboard', dashboard);
-  console.info(`dashboard available at http://localhost:${PORT}/dashboard`); // eslint-disable-line no-console
+  log(`dashboard available at http://localhost:${PORT}/dashboard`); // eslint-disable-line no-console
 }
 
 app.get('/api', (req, res) => res.redirect(301, '/parse'));
 
 app.post('/upload', (req, res) => {
-  console.log('files', req.files);
-  upload(req, res, (err) => {
-    return err ? res.status(400).send('Only compressed files are allowed!') : res.end('File uploaded sucessfully!.');
+  log(`File to upload: ${JSON.stringify(req.file)}`);
+  fileUpload.uploadFile(req, res).then((result) => {
+    return res.end(result);
   });
 });
 
 app.post('/analyze', (req, res) => {
-  console.log('Request body for Analyze: ', req.body);
-  unzip.decompress().then(something => {
-    console.log('Extraction Completed! ', something);
-    res.send('Extraction Completed!');
-    analyzeCode().then((analyzeCodeRes) => {
-      res.end(`Analysis complete: ${analyzeCodeRes}`);
-    }, (analyzeCodeError) => {
-      console.log(`Error Analyzing Code and Generating Reports: ${analyzeCodeError}`);
+  log('Request body for Analyze: ', req.body);
+  let folderNameForProjectExtraction = req.body.fileName.split('.zip')[0];
+  try {
+    decompress.decompress(folderNameForProjectExtraction).then(decompressionResult => {
+      log(decompressionResult);
+      res.write(decompressionResult);
+      analyzeCode(folderNameForProjectExtraction).then((analyzeCodeRes) => {
+        res.end(`Analysis complete!\n`);
+      }, (analyzeCodeError) => {
+        log(`Error Analyzing Code and Generating Reports\n`);
+      });
+    }, (errorOnDecompressing) => {
+      res.end(errorOnDecompressing);
     });
-  });
+  } catch(err) {
+    res.end(`Something went wrong. Here's the error: ${err}`);
+  }
 });
 
 app.listen(PORT, (err) => {
   if (err) {
-    return console.error(err);
+    return log(err);
   }
-  console.log(`parse api listening on ${config.serverURL}`);
+  log(`parse api listening on ${config.serverURL}`);
 });

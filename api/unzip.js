@@ -4,38 +4,33 @@ import unzip from 'unzip';
 
 const log = console.log;
 
-const archive = 'uploads/1511119987931_JPUI.zip';
-const dest = 'extracted';
+const archiveLocation = 'uploads/';
+const destination = 'extracted/';
 
-export function decompress() {
-    var readStream = fs.createReadStream(archive);
-    var writeStream = fstream.Writer(dest);
-
+let decompress = (folderName) => {
+    let readStream = fs.createReadStream(`${archiveLocation}${folderName}.zip`);
+    let folderToExtractIn = `${destination}${folderName}/`;
+    // This creates the directory if it's not already present!
+    if (!fs.existsSync(destination)) {
+        fs.mkdirSync(destination);
+    }
+    if (!fs.existsSync(folderToExtractIn)) {
+        fs.mkdirSync(folderToExtractIn);
+    }
+    let writeStream = fstream.Writer(folderToExtractIn);
     return new Promise((resolve, reject) => {
-
         readStream
-        .pipe(unzip.Parse())
-        .pipe(writeStream)
-        .on('close', function(something) {
-          console.log('Extraction Complete: ', something);
-          resolve('Extraction Completed!' + something);
-        });
+            .pipe(unzip.Parse())
+            .pipe(writeStream)
+            .on('error', (err) => {
+                reject(`Error extracting the archive: ${err}`);
+            })
+            .on('close', () => {
+                resolve('Extraction Completed!\n');
+            });
     });
+}
 
-    // fs.createReadStream(archive)
-    //     .pipe(unzip.Parse())
-    //     .on('entry', function (entry) {
-    //         entry.pipe(fs.createWriteStream(dest));
-    //         /* var fileName = entry.path;
-    //         var type = entry.type; // 'Directory' or 'File'
-    //         var size = entry.size;
-    //         if (fileName === "this IS the file I'm looking for") {
-    //             entry.pipe(fs.createWriteStream(dest));
-    //         } else {
-    //             entry.autodrain();
-    //         } */
-    //     })
-    //     .on('close', function(something) {
-    //         console.log('Extraction Complete: ', something);
-    //     });
+module.exports = {
+    decompress
 }

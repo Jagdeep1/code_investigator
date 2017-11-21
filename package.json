@@ -48,14 +48,14 @@
     "zone.js": "^0.8.18"
   },
   "scripts": {
+    "api": "nodemon --ignore extracted/ --ignore reports/ api/index.js --exec babel-node",
+    "testApi": "nodemon --ignore extracted/ --ignore reports/ --inspect api/index.js --exec babel-node 9999",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
-    "api": "nodemon api/index.js --exec babel-node",
-    "testApi": "nodemon --inspect api/index.js --exec babel-node 9999"
+    "build": "npm-run-all build-css build-js"
   },
   "eslintConfig": {
     "extends": "react-app"

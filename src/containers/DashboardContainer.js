@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Dashboard from '../components/Dashboard';
 
 class DashboardContainer extends Component {
   render() {
@@ -17,4 +18,4 @@ const select = (state) => ({
   userId: state.auth.userId
 });
 
-export default connect(select)(DashboardContainer);
+export default connect(select)(Dashboard);

@@ -1,5 +1,5 @@
 import App from './components/App';
-import Home from './components/Home';
+import Landing from './components/Landing';
 import SignupContainer from './containers/SignupContainer';
 import LoginContainer from './containers/LoginContainer';
 import DashboardContainer from './containers/DashboardContainer';
@@ -32,17 +32,21 @@ const createRoutes = (store) => {
       path: '/',
       component: App,
       indexRoute: {
-        component: Home
+        component: Landing
       },
       childRoutes: [
         {
           path: 'dashboard',
-          component: DashboardContainer,
-          onEnter: requireAuth(store)
+          component: DashboardContainer
+          //onEnter: requireAuth(store)
         },
         {
           path: 'signup',
           component: SignupContainer
+        },
+        {
+          path: 'landing',
+          component: Landing
         },
         {
           path: 'login',

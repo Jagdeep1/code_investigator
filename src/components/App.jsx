@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
         <header>
           <h1><code>Code Investigator</code></h1>
         </header>
-        <nav className="nav-bar">
+        {/* <nav className="nav-bar">
           <li className="nav-elements"><Link to="/">Home</Link></li>
           <li className="nav-elements"><Link to="/signup">Signup</Link></li>
           <li className="nav-elements"><Link to="/login">Login</Link></li>
@@ -18,7 +18,7 @@ class App extends Component {
           <li className="nav-elements pull-right" >
             <Link to="/codeupload" className="active" style={{'margin':'0'}}>CodeUpload</Link>
           </li>
-        </nav>
+        </nav> */}
         {this.props.children}
         <footer>
           <p>some footer text</p>

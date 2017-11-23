@@ -1,4 +1,10 @@
-@import '../../public/assets/_spacings.scss';
+@import '../../public/assets/scss/partials/_spacings.scss';
+@import '../../public/assets/scss/partials/_text-colors.scss';
+@import '../../public/assets/scss/partials/_utilities.scss';
+
+body {
+  background-image: url('../../public/assets/images/playstation.png')
+}
 
 .nav-bar {
   list-style-type: none;
@@ -25,3 +31,5 @@
 }
 
 @import 'Login.scss';
+@import 'Dashboard.scss';
+

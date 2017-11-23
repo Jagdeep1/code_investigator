@@ -11,11 +11,17 @@ class Landing extends Component {
   render() {
     return (
       <div>
+        <header>
+          <h1><code>Code Investigator</code></h1>
+        </header>
         <h1>This is landing page!</h1>
         <div>
           <nav className="nav-bar">
             <li className="nav-elements">
               <Link to="/">Home</Link>
+            </li>
+            <li className="nav-elements">
+              <Link to="/dashboard">Dashboard</Link>
             </li>
             <li className="nav-elements">
               <Link to="/signup">Signup</Link>

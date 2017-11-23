@@ -1,0 +1,92 @@
+.dash-nav-wrapper {
+  background-image: url('../../public/assets/images/dash-nav-background.png');
+}
+
+.dash-nav-bar {
+  list-style-type: none;
+  margin: 0 0 10px;
+  padding: 0;
+  overflow: hidden;
+  .dash-nav-elements {
+    float: left;
+    a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    a:hover:not(.active) {
+     background-color: peachpuff;
+    }
+  }
+  .active {
+    background-color: #4CAF50;
+  }
+}
+
+.dash-numeric-tile {
+  width: 24%;
+  min-height: 80px;
+  margin-right: 15px;
+  &:last-child {
+    margin-right: 0px
+  }
+}
+
+.tile-gradient1 {
+  border: 1px solid;
+  opacity: 1;
+  padding: 0px;
+  border-width: 0px;
+  border-radius: 0px;
+  border-color: rgb(200, 200, 200);
+  border-style: solid;
+  background-color: transparent;
+  background-image: linear-gradient(45deg, rgb(98, 39, 116) 2%, rgb(197, 51, 100) 102%);
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center center;
+}
+
+.tile-gradient2 {
+  opacity: 1;
+  padding: 0px;
+  border-width: 0px;
+  border-radius: 0px;
+  border-color: rgb(200, 200, 200);
+  border-style: solid;
+  background-color: transparent;
+  background-image: linear-gradient(45deg, rgb(245, 78, 162) 4%, rgb(255, 118, 118) 104%, rgb(246, 36, 89) 104%);
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center center;
+}
+
+.tile-gradient3 {
+  opacity: 1;
+  padding: 0px;
+  border-width: 0px;
+  border-radius: 0px;
+  border-color: rgb(200, 200, 200);
+  border-style: solid;
+  background-color: transparent;
+  background-image: linear-gradient(45deg, rgb(23, 234, 217) 2%, rgb(96, 120, 234) 102%);
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center center;
+}
+
+.tile-gradient4 {
+  opacity: 1;
+  padding: 0px;
+  border-width: 0px;
+  border-radius: 0px;
+  border-color: rgb(200, 200, 200);
+  border-style: solid;
+  background-color: transparent;
+  background-image: linear-gradient(45deg, rgb(191, 85, 236) 2%, rgb(96, 148, 234) 102%);
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center center;
+}

@@ -6,9 +6,6 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <header>
-          <h1><code>Code Investigator</code></h1>
-        </header>
         {/* <nav className="nav-bar">
           <li className="nav-elements"><Link to="/">Home</Link></li>
           <li className="nav-elements"><Link to="/signup">Signup</Link></li>
@@ -20,9 +17,9 @@ class App extends Component {
           </li>
         </nav> */}
         {this.props.children}
-        <footer>
+        {/* <footer>
           <p>some footer text</p>
-        </footer>
+        </footer> */}
       </div>
     );
   }

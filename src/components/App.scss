@@ -2,9 +2,11 @@
 @import '../../public/assets/scss/partials/_text-colors.scss';
 @import '../../public/assets/scss/partials/_utilities.scss';
 
-body {
-  background-image: url('../../public/assets/images/playstation.png')
+@font-face {
+  font-family: FontAwesome;
+  src: url(../../public/assets/fonts/FontAwesome.otf);
 }
+
 
 @import 'Login.scss';
 @import 'Dashboard.scss';

@@ -15,7 +15,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="dash-wrapper m-t-10">
+      <div className="dash-wrapper m-t-10 pull-left">
         {/* <h1>This is dashboard!</h1> */}
         <div className="dash-nav-wrapper">
           <nav className="dash-nav-bar dash-nav">

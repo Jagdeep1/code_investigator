@@ -11,8 +11,7 @@ class Landing extends Component {
     return (
       <div>
         <header></header>
-        <h1>This is landing page!</h1>
-        <div className="landing-wrapper">
+        <div className="landing-wrapper text-white">
           <nav className="landing-nav-bar">
             <li className="landing-nav-elements">
               <a href="#">

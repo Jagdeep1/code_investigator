@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router';
+import {Link, withRouter} from 'react-router';
 
 class Signup extends Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class Signup extends Component {
     console.log('this.props', this.props);
     const {error, isSigningUp} = this.props;
     return (
-      <div className="login-wrapper">
+      <div className="login-wrapper p-t-100">
         <h1>Sign up</h1>
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-group">
@@ -87,6 +87,7 @@ class Signup extends Component {
           </div>
 
         </form>
+        <Link to="/landing"><i className="fa fa-angle-left"></i> Back</Link>
       </div>
     );
   }

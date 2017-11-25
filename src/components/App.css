@@ -76,6 +76,24 @@
 .p-r-15 {
   padding-right: 15px; }
 
+.m-t-35 {
+  margin-top: 35px; }
+
+.m-t-50 {
+  margin-top: 50px; }
+
+.m-t-100 {
+  margin-top: 100px; }
+
+.p-t-35 {
+  padding-top: 35px; }
+
+.p-t-50 {
+  padding-top: 50px; }
+
+.p-t-100 {
+  padding-top: 100px; }
+
 .text-black {
   color: black; }
 
@@ -91,12 +109,16 @@
 .zero-auto {
   margin: 0 auto; }
 
-body {
-  background-image: url("../../public/assets/images/playstation.png"); }
+@font-face {
+  font-family: FontAwesome;
+  src: url(../../public/assets/fonts/FontAwesome.otf); }
 
 .login-wrapper {
   width: 400px;
   margin: 0 auto; }
+
+.dash-wrapper {
+  background: #faebd79e; }
 
 .dash-nav-wrapper {
   background-image: url("../../public/assets/images/dash-nav-background.png"); }
@@ -178,6 +200,9 @@ body {
   background-size: auto;
   background-repeat: repeat;
   background-position: center center; }
+
+body {
+  background-image: url("../../public/assets/images/2.jpg"); }
 
 .landing-nav-bar {
   list-style-type: none;

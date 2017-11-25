@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import {FormControl, FormGroup, ControlLabel, Checkbox} from 'react-bootstrap';
 
 class Login extends Component {
@@ -44,7 +44,7 @@ class Login extends Component {
   render() {
     const { error, isLoggingIn } = this.props;
     return (
-      <div className="login-wrapper">
+      <div className="login-wrapper p-t-100">
         <h1>Login</h1>
         <form onSubmit={this.handleFormSubmit}>
         <FormGroup>
@@ -78,6 +78,7 @@ class Login extends Component {
             />
           </FormGroup>
         </form>
+        <Link to="/landing"><i className="fa fa-angle-left"></i> Back</Link>
       </div>
     );
   }

@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router';
 
-import Charts from './Charts'; 
+import ChartsGauge from './ChartsGauge'; 
+import ChartsDoughnut from './ChartsDoughnut'; 
+import ChartsPie from './ChartsPie'; 
+import ChartsHistogram from './ChartsHistogram'; 
+import ChartsMixedLineBar from './ChartsMixedLineBar'; 
 
 class Dashboard extends Component {
 
@@ -25,7 +29,7 @@ class Dashboard extends Component {
               <Link to="/login">Login</Link>
             </li>
             <li className="dash-nav-elements">
-              <Link to="/charts">Charts</Link>
+              <Link to="/ChartsGauge">ChartsGauge</Link>
             </li> */}
             <li className="dash-nav-elements pull-right">
               <Link to="/codeupload" className="m-0">CodeUpload</Link>
@@ -59,10 +63,22 @@ class Dashboard extends Component {
         </div>
         <div className="charts-line-wrapper">
             <div className="col-md-6 zero-auto">
-              <Charts/>
+              <ChartsGauge/>
             </div>
             <div className="col-md-6 zero-auto">
-              <Charts/>
+              <ChartsGauge/>
+            </div>
+            <div className="col-md-6 zero-auto">
+              <ChartsDoughnut/>
+            </div>
+            <div className="col-md-6 zero-auto">
+              <ChartsPie/>
+            </div>
+            <div className="col-md-12">
+              <ChartsHistogram/>
+            </div>
+            <div className="col-md-12">
+              <ChartsMixedLineBar/>
             </div>
         </div>
       </div>

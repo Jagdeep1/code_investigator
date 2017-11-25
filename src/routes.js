@@ -4,7 +4,7 @@ import SignupContainer from './containers/SignupContainer';
 import LoginContainer from './containers/LoginContainer';
 import DashboardContainer from './containers/DashboardContainer';
 import NotFound from './components/NotFound';
-import Charts from './components/Charts';
+import ChartsGauge from './components/ChartsGauge';
 import CodeUpload from './containers/CodeUpload';
 import TestContainer from './containers/TestContainer';
 
@@ -53,8 +53,8 @@ const createRoutes = (store) => {
           component: LoginContainer
         },
         {
-          path: 'charts',
-          component: Charts
+          path: 'chartsGauge',
+          component: ChartsGauge
         },
         {
           path: 'codeupload',

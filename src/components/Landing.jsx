@@ -32,7 +32,7 @@ class Landing extends Component {
               <Link to="/login">Login</Link>
             </li>
             <li className="landing-nav-elements">
-              <Link to="/charts">Charts</Link>
+              <Link to="/chartsGauge">Charts</Link>
             </li>
             <li className="landing-nav-elements">
               <Link to="/testcomponent">TestComponents</Link>
